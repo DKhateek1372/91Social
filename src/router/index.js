@@ -1,28 +1,17 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
+import { BrowserRouter } from 'react-router-dom';
+import SpaceX from '../container/SpaceX';
 
 class CustomRoute extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-      
-        }
-    }
-
-    componentDidMount() {
-  
-    }
-    
-    componentDidUpdate() {
-       
-    }
-
     render() {
-     return(
-        <React.Fragment>
-        </React.Fragment>
-     )
+        return (
+            <React.Fragment>
+                <BrowserRouter>
+                    <Route exact path="/" component={SpaceX} />
+                </BrowserRouter>
+            </React.Fragment>
+        )
     }
 }
 

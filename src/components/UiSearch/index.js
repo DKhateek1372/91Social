@@ -3,17 +3,17 @@ import * as React from 'react'
 import '../../styles/index.css';
 
 const Searchbar = (props) => {
-    const { serachBar, bookSearchHandler } = props;
+    const { serachBar, searchHandler } = props;
     return (
-        <div>
+        <>
              <input
-                    placeholder="Please Search Here (Book Number, Title)"
-                    margin="normal"
-                    value={serachBar}
-                    onChange={bookSearchHandler} 
-                    className="searchBooks"
-                />
-        </div>
+                placeholder="Please Search Here"
+                margin="normal"
+                value={serachBar}
+                onChange={searchHandler} 
+                className="globalSearch"
+             />
+        </>
     )
 }
 export default Searchbar;

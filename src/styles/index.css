@@ -100,6 +100,14 @@ color: white;
     font-size: 1.875rem;
     font-weight: inherit;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    color: white;
+    width: 100%;
+    background: rgb(0, 19, 30);
+    border-bottom: 1px solid rgb(0, 83, 136);
 }
 
 .text-xl {
@@ -251,7 +259,7 @@ color: white;
     margin-top: 5
 } 
 
-.marginBooks{
+.margin{
     margin: 2rem 5rem;
 }
 
@@ -260,14 +268,15 @@ color: white;
 }
 
 
-.searchBooks{
-    padding: 1rem 3rem;
+.globalSearch{
+    padding: 0.5rem 1rem;
     border-radius: 15px;
     border: 1px solid #e5e5e5;
     color: black;
     width: 85%;
-    margin: 2rem 5rem;
+    margin: 2rem 0rem;
     font-size: 1rem;
+    outline: none;
 }
 
 .parent{
@@ -320,4 +329,14 @@ color: white;
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.ant-table {
+    width: 90vw !important;
+} 
+
+.ant-table-row .ant-table-cell .isoTextCell {
+    width: 300vw !important;
+}
+.ant-table-row .ant-table-cell .isoTextCell  {
+    width: 300vw !important;
 }

@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// Default API will be your root
-// const baseURL = process.env.URL;
-
 const api_key= 'here your api key will come'
 
 class Api {
@@ -40,8 +37,6 @@ class Api {
             const options = { method: verb, params };
             return axios(url, options);
         } else {
-            // const host = baseURL;
-            // const url = `${host}${route}`;
             const url = `${route}`;
             const options = { method: verb, data: params };
             let keys = { ...key, Authorization: localStorage.getItem('Authorization') };

@@ -2,50 +2,30 @@ import { call, all, put, takeLatest } from 'redux-saga/effects';
 import api from '../../services/index';
 
 import {
-  libraryManagementAction
+  SpaceXActions
 } from './actions';
 
-function* handleFetchBookList(requets) {
-  const { payload } = requets;
+function* fetchSpaceXHistoryRequest() {
   try {
-    const response = yield call(api.getBooks, payload);
-    yield put(libraryManagementAction.fetchBooksDataSuccess(response.data));
+    const response = yield call(api.spaceXDataHistory);
+    yield put(SpaceXActions.fetchSpaceXHistorySuccess(response.data));
   } catch (error) {
-    yield put(libraryManagementAction.fetchBooksDataError(error));
+    yield put(SpaceXActions.fetchSpaceXHistoryError(error));
   }
-}
+};
 
-function* handlefetchBookDetails(requets) {
-  const { payload } = requets;
+function* fetchSpaceXPaloadRequest(){
   try {
-    yield put(libraryManagementAction.fetchBookDetailsSuccess(payload));
-  } catch (err) {
-    yield put(libraryManagementAction.fetchBookDetailsError(err));
+    const response = yield call(api.spaceXDataPayloads);
+    yield put(SpaceXActions.fetchSpaceXPayloadSuccess(response.data));
+  } catch (error) {
+    yield put(SpaceXActions.fetchSpaceXPayloadError(error));
   }
 }
 
-function* addBooksBorrowedRequest(requets) {
-  const { payload } = requets;
- try {
-  yield put(libraryManagementAction.addBooksBorrowedSuccess(payload.data));
-  } catch (err) {
-    yield put(libraryManagementAction.addBooksBorrowedError(err));
-  }
-}
-
-function* handleUserBorrowedBooksList() {
-   try {
-    yield put(libraryManagementAction.userBorrowedBooksListSuccess());
-  } catch (err) {
-    yield put(libraryManagementAction.userBorrowedBooksListError(err));
-  }
-}
-
-export function* libraryManagementSagas() {
+export function* spaceXSagas() {
   yield all([
-    yield takeLatest(libraryManagementAction.FETCH_BOOKS_DATA_REQUEST, handleFetchBookList),
-    yield takeLatest(libraryManagementAction.FETCH_BOOKS_DETAILS_REQUEST, handlefetchBookDetails),
-    yield takeLatest(libraryManagementAction.ADD_BOOKS_BORROWED_REQUEST, addBooksBorrowedRequest),
-    yield takeLatest(libraryManagementAction.USER_BORROWED_BOOKS_LIST_REQUEST, handleUserBorrowedBooksList)
-  ]);
+    yield takeLatest(SpaceXActions.FETCH_SPACE_X_HISTORY_REQUEST, fetchSpaceXHistoryRequest),
+    yield takeLatest(SpaceXActions.FETCH_SPACE_X_PAYLOAD_REQUEST, fetchSpaceXPaloadRequest)
+ ]);
 }

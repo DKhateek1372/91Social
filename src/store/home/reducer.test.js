@@ -1,47 +1,39 @@
-import libraryManagementReducer from './reducer';
-import { libraryManagementAction } from './actions';
-import listItemData from '../../../data-for-testing';
+import SpaceXActionsReducer from './reducer';
+import { SpaceXActions } from './actions';
 
 const initialState = {
   loading: true,
-  libraryData: [],
-      bookDetails:[],
-      addBooks:[],
-      borrowedBooks: [],
-      myBooks :[]   
+  SpaceXHistory :[]
 };
 
-describe('libraryManagementReducer reducer', () => {
+describe('SpaceXActionsReducer reducer', () => {
  
   it('returns the initial state', () => {
-    expect(libraryManagementReducer(undefined, {})).toEqual({
+    expect(SpaceXActionsReducer(undefined, {})).toEqual({
       loading: true,
-      libraryData: [],
-      bookDetails:[],
-      addBooks:[],
-      borrowedBooks: [],
-      myBooks :[]   
+      SpaceXHistory: [],
+ 
     });
   });
 
   it('should return the initial state', () => {
-    expect(libraryManagementReducer(initialState, { type: libraryManagementAction.FETCH_BOOKS_DATA_REQUEST})).toEqual({
+    expect(SpaceXActionsReducer(initialState, { type: SpaceXActions.FETCH_SPACE_X_HISTORY_REQUEST})).toEqual({
       ...initialState,
       loading: true,
     });
   });
 
   it('should return the updated data state', () => {
-    expect(libraryManagementReducer(initialState,{
-        type: libraryManagementAction.FETCH_BOOKS_DATA_SUCCESS,
+    expect(SpaceXActionsReducer(initialState,{
+        type: SpaceXActions.FETCH_SPACE_X_HISTORY_SUCCESS,
      })).toEqual({
       loading: false,
-      libraryData: listItemData,
+      SpaceXHistory :[]
     });
   });
 
   it('handles failure', () => {
-    expect(libraryManagementReducer(initialState, { type: libraryManagementAction.FETCH_BOOKS_DATA_ERROR  })).toEqual({
+    expect(SpaceXActionsReducer(initialState, { type: SpaceXActions.FETCH_SPACE_X_HISTORY_ERROR  })).toEqual({
       ...initialState,
       loading: true,
       errors: '',
